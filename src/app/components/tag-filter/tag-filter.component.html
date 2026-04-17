@@ -1,0 +1,21 @@
+<div class="filter-bar" role="group" aria-label="Filter by tag">
+  <button
+    class="tag-pill"
+    [class.active]="photos.selectedTags().size === 0"
+    (click)="photos.clearFilters()"
+    aria-pressed="{{ photos.selectedTags().size === 0 }}"
+  >
+    All
+  </button>
+
+  @for (tag of photos.allTags(); track tag) {
+    <button
+      class="tag-pill"
+      [class.active]="photos.selectedTags().has(tag)"
+      (click)="photos.toggleTag(tag)"
+      [attr.aria-pressed]="photos.selectedTags().has(tag)"
+    >
+      {{ tag }}
+    </button>
+  }
+</div>

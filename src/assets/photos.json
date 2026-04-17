@@ -1,0 +1,22 @@
+[
+  {
+    "driveId": "1g_kSk2ms11R_SlwL3WJNgq0sajhj_g8z",
+    "title": "Aurora at Grimevatnet",
+    "description": "Aurora",
+    "tags": ["landscape", "norway", "aurora", "astro"],
+    "year": 2024
+  },
+  {
+    "driveId": "REPLACE_WITH_YOUR_DRIVE_FILE_ID",
+    "title": "Golden hour in the mountains",
+    "description": "The last light catching the ridge lines.",
+    "tags": ["landscape", "mountains", "golden hour"],
+    "year": 2024
+  },
+  {
+    "driveId": "REPLACE_WITH_YOUR_DRIVE_FILE_ID",
+    "title": "Street life, Bergen",
+    "tags": ["street", "urban", "norway"],
+    "year": 2023
+  }
+]
