@@ -1,0 +1,44 @@
+<div class="page">
+  <!-- Header -->
+  <header class="header">
+    <h1 class="header__name">Sarah Ansnes</h1>
+    <p class="header__tagline">Photography</p>
+  </header>
+
+  <main class="content">
+    <!-- Tag filter bar -->
+    <app-tag-filter />
+
+    <!-- Loading state -->
+    @if (photos.loading()) {
+      <div class="state-msg" aria-live="polite">Loading photos…</div>
+    }
+
+    <!-- Error state -->
+    @if (photos.error()) {
+      <div class="state-msg state-msg--error" role="alert">{{ photos.error() }}</div>
+    }
+
+    <!-- Empty state after filtering -->
+    @if (!photos.loading() && !photos.error() && photos.filteredPhotos().length === 0) {
+      <div class="state-msg">No photos match these filters.</div>
+    }
+
+    <!-- Masonry grid -->
+    @if (photos.filteredPhotos().length > 0) {
+      <section class="grid" aria-label="Photo gallery">
+        @for (photo of photos.filteredPhotos(); track photo.driveId) {
+          <app-photo-card [photo]="photo" (open)="selected.set($event)" />
+        }
+      </section>
+    }
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© {{ currentYear }} Sarah Ansnes</p>
+  </footer>
+</div>
+
+<!-- Lightbox (portal-style, rendered outside the grid) -->
+<app-lightbox [photo]="selected()" (close)="selected.set(null)" />

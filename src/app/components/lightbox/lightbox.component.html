@@ -1,0 +1,29 @@
+@if (photo(); as p) {
+  <div class="backdrop" (click)="close.emit()" role="dialog" aria-modal="true" [attr.aria-label]="p.title">
+    <button class="close-btn" (click)="close.emit()" aria-label="Close lightbox">&#x2715;</button>
+
+    <div class="lightbox" (click)="$event.stopPropagation()">
+      <div class="lightbox__img-wrap">
+        <img [src]="fullUrl(p.driveId)" [alt]="p.title" />
+      </div>
+
+      <div class="lightbox__meta">
+        <h2 class="lightbox__title">{{ p.title }}</h2>
+
+        @if (p.description) {
+          <p class="lightbox__desc">{{ p.description }}</p>
+        }
+
+        <div class="lightbox__tags">
+          @for (tag of p.tags; track tag) {
+            <span class="lightbox__tag">{{ tag }}</span>
+          }
+        </div>
+
+        @if (p.year) {
+          <span class="lightbox__year">{{ p.year }}</span>
+        }
+      </div>
+    </div>
+  </div>
+}
